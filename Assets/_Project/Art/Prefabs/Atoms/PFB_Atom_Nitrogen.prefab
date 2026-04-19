@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 2799337710171830411}
   - component: {fileID: 6231119840528299360}
   m_Layer: 0
-  m_Name: Atom_Nitrogen
+  m_Name: PFB_Atom_Nitrogen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,8 +306,8 @@ Rigidbody:
   m_GameObject: {fileID: 8470410568109734752}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_LinearDamping: 2
+  m_AngularDamping: 2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
