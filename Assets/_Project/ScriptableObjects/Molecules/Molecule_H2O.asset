@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Molecule_H2O
   m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.MoleculeDefinition
   moleculeName: Water
-  formula: "H\u2082O"
+  formula: H2O
   bondType: 0
   requiredAtoms:
   - atomType: 0

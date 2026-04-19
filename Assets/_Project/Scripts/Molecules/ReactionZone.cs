@@ -10,6 +10,9 @@ namespace VRMolecularLab.Molecules
         [Header("Data")]
         [SerializeField] private MoleculeDatabase moleculeDatabase;
 
+        [Header("Display")]
+        [SerializeField] private MoleculeResultDisplay moleculeResultDisplay;
+
         [Header("Debug")]
         [SerializeField] private bool logMatches = true;
 
@@ -50,6 +53,18 @@ namespace VRMolecularLab.Molecules
             Dictionary<AtomType, int> atomCounts = BuildAtomCounts();
 
             MoleculeDefinition match = moleculeDatabase.FindMatchingMolecule(atomCounts);
+
+            if (moleculeResultDisplay != null)
+            {
+                if (match != null)
+                {
+                    moleculeResultDisplay.ShowMolecule(match);
+                }
+                else
+                {
+                    moleculeResultDisplay.ClearDisplay();
+                }
+            }
 
             if (logMatches)
             {

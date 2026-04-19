@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Molecule_O2
   m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.MoleculeDefinition
   moleculeName: Oxygen Gas
-  formula: "O\u2082"
+  formula: O2
   bondType: 1
   requiredAtoms:
   - atomType: 1

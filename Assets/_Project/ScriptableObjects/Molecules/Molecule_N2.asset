@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Molecule_N2
   m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.MoleculeDefinition
   moleculeName: Nitrogen Gas
-  formula: "N\u2082"
+  formula: N2
   bondType: 2
   requiredAtoms:
   - atomType: 3

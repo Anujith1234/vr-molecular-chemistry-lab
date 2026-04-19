@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Molecule_CH4
   m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.MoleculeDefinition
   moleculeName: Methane
-  formula: "CH\u2084"
+  formula: CH4
   bondType: 0
   requiredAtoms:
   - atomType: 2

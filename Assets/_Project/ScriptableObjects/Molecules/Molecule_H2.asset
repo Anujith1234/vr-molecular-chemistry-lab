@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Molecule_H2
   m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.MoleculeDefinition
   moleculeName: Hydrogen Gas
-  formula: "H\u2082"
+  formula: H2
   bondType: 0
   requiredAtoms:
   - atomType: 0

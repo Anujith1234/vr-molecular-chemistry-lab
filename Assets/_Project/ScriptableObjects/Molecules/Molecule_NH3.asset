@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Molecule_NH3
   m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.MoleculeDefinition
   moleculeName: Ammonia
-  formula: "NH\u2083"
+  formula: NH3
   bondType: 0
   requiredAtoms:
   - atomType: 3
