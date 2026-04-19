@@ -18,5 +18,5 @@ MonoBehaviour:
   requiredAtoms:
   - atomType: 0
     count: 2
-  moleculePrefab: {fileID: 0}
+  moleculePrefab: {fileID: 2741793230748672200, guid: 3cd43a0f6298c6742992c4012c2ada93, type: 3}
   description: 

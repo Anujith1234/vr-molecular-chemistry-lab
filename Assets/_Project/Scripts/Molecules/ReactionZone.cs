@@ -12,6 +12,7 @@ namespace VRMolecularLab.Molecules
 
         [Header("Display")]
         [SerializeField] private MoleculeResultDisplay moleculeResultDisplay;
+        [SerializeField] private MoleculeVisualPresenter moleculeVisualPresenter;
 
         [Header("Debug")]
         [SerializeField] private bool logMatches = true;
@@ -63,6 +64,18 @@ namespace VRMolecularLab.Molecules
                 else
                 {
                     moleculeResultDisplay.ClearDisplay();
+                }
+            }
+
+            if (moleculeVisualPresenter != null)
+            {
+                if (match != null)
+                {
+                    moleculeVisualPresenter.ShowMolecule(match);
+                }
+                else
+                {
+                    moleculeVisualPresenter.ClearVisual();
                 }
             }
 
