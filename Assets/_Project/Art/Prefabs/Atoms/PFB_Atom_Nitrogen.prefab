@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 531854401961821762}
   - component: {fileID: 2799337710171830411}
   - component: {fileID: 6231119840528299360}
+  - component: {fileID: 2227116616793628111}
   m_Layer: 0
   m_Name: PFB_Atom_Nitrogen
   m_TagString: Untagged
@@ -468,3 +469,15 @@ MonoBehaviour:
   atomType: 3
   atomRenderer: {fileID: 6489516151442637470}
   atomLabel: {fileID: 7915201821967660828}
+--- !u!114 &2227116616793628111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470410568109734752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e45f38f6407bd4c96d63ad1e9261d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.AtomResettable

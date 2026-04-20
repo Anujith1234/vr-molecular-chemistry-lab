@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 5063963996633838346}
   - component: {fileID: 8310155827752916060}
   - component: {fileID: 5615889965492399871}
+  - component: {fileID: 3423756867057195831}
   m_Layer: 0
   m_Name: PFB_Atom_Hydrogen
   m_TagString: Untagged
@@ -468,3 +469,15 @@ MonoBehaviour:
   atomType: 0
   atomRenderer: {fileID: 292330423512817465}
   atomLabel: {fileID: 886187429542227993}
+--- !u!114 &3423756867057195831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197365819916151295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e45f38f6407bd4c96d63ad1e9261d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.AtomResettable

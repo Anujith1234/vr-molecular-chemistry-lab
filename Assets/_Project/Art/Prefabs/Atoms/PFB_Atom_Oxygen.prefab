@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7570769627876154117}
   - component: {fileID: 2456714791342861564}
   - component: {fileID: 5420469737386253584}
+  - component: {fileID: -4425359847167260992}
   m_Layer: 0
   m_Name: PFB_Atom_Oxygen
   m_TagString: Untagged
@@ -287,6 +288,18 @@ MonoBehaviour:
   atomType: 1
   atomRenderer: {fileID: 4258705248290531253}
   atomLabel: {fileID: 352287801997522407}
+--- !u!114 &-4425359847167260992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263267146342186822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e45f38f6407bd4c96d63ad1e9261d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.AtomResettable
 --- !u!1 &4493228082796936089
 GameObject:
   m_ObjectHideFlags: 0
