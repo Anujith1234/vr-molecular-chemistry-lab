@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRMolecularLab.Data;
 using VRMolecularLab.XR;
+using VRMolecularLab.UI;
 
 namespace VRMolecularLab.Molecules
 {
@@ -13,6 +14,7 @@ namespace VRMolecularLab.Molecules
         [Header("Display")]
         [SerializeField] private MoleculeResultDisplay moleculeResultDisplay;
         [SerializeField] private MoleculeVisualPresenter moleculeVisualPresenter;
+        [SerializeField] private MoleculeLibraryDisplay moleculeLibraryDisplay;
 
         [Header("Debug")]
         [SerializeField] private bool logMatches = true;
@@ -65,6 +67,11 @@ namespace VRMolecularLab.Molecules
                 {
                     moleculeResultDisplay.ClearDisplay();
                 }
+            }
+
+            if (match != null && moleculeLibraryDisplay != null)
+            {
+                moleculeLibraryDisplay.RegisterDiscoveredMolecule(match);
             }
 
             if (moleculeVisualPresenter != null)

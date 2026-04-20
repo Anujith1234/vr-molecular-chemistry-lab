@@ -7,9 +7,9 @@ namespace VRMolecularLab.Molecules
     {
         [Header("UI References")]
         [SerializeField] private GameObject resultRoot;
-        [SerializeField] private TextMeshPro nameText;
-        [SerializeField] private TextMeshPro formulaText;
-        [SerializeField] private TextMeshPro bondText;
+        [SerializeField] private TMP_Text nameText;
+        [SerializeField] private TMP_Text formulaText;
+        [SerializeField] private TMP_Text bondText;
 
         [Header("Fallback Text")]
         [SerializeField] private string emptyNameText = "No Molecule";
