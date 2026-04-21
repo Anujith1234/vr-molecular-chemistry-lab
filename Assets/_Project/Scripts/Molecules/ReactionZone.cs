@@ -4,6 +4,7 @@ using UnityEngine;
 using VRMolecularLab.Data;
 using VRMolecularLab.UI;
 using VRMolecularLab.XR;
+using VRMolecularLab.Audio;
 
 namespace VRMolecularLab.Molecules
 {
@@ -17,6 +18,9 @@ namespace VRMolecularLab.Molecules
         [SerializeField] private MoleculeResultDisplay moleculeResultDisplay;
         [SerializeField] private MoleculeVisualPresenter moleculeVisualPresenter;
         [SerializeField] private MoleculeLibraryDisplay moleculeLibraryDisplay;
+
+        [Header("Audio")]
+        [SerializeField] private LabAudioManager labAudioManager;
 
         [Header("Debug")]
         [SerializeField] private bool logMatches = true;
@@ -139,6 +143,11 @@ namespace VRMolecularLab.Molecules
             if (match != null)
             {
                 ConsumeCurrentAtoms();
+
+                if (labAudioManager != null)
+                {
+                    labAudioManager.PlayFormSuccess();
+                }
 
                 if (logMatches)
                 {

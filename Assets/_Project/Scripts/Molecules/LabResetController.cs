@@ -1,10 +1,12 @@
 using UnityEngine;
+using VRMolecularLab.Audio;
 
 namespace VRMolecularLab.Molecules
 {
     public class LabResetController : MonoBehaviour
     {
         [SerializeField] private ReactionZone reactionZone;
+        [SerializeField] private LabAudioManager labAudioManager;
 
         public void ResetLab()
         {
@@ -15,6 +17,11 @@ namespace VRMolecularLab.Molecules
             }
 
             reactionZone.ResetReactionState();
+
+            if (labAudioManager != null)
+            {
+                labAudioManager.PlayResetLab();
+            }
         }
     }
 }
