@@ -23,6 +23,9 @@ namespace VRMolecularLab.Molecules
         [Header("Audio")]
         [SerializeField] private LabAudioManager audioManager;
 
+        [Header("Completion")]
+        [SerializeField] private LabCompletionController completionController;
+
         [Header("Debug")]
         [SerializeField] private bool enableDebugLogs = false;
 
@@ -87,6 +90,9 @@ namespace VRMolecularLab.Molecules
 
             if (atomsInZone.Count == 0)
             {
+                resultDisplay?.ShowInvalidCombination();
+                visualPresenter?.ClearVisual();
+                audioManager?.PlayInvalidForm();
                 Log("No atoms in reaction zone.");
                 return;
             }
@@ -105,8 +111,6 @@ namespace VRMolecularLab.Molecules
 
             resultDisplay?.ClearDisplay();
             visualPresenter?.ClearVisual();
-
-            audioManager?.PlayResetLab();
         }
 
         #endregion
@@ -127,20 +131,30 @@ namespace VRMolecularLab.Molecules
 
         private void HandleReactionResult(MoleculeDefinition match)
         {
-            UpdateUI(match);
-            UpdateVisuals(match);
-
             if (match == null)
             {
+                resultDisplay?.ShowInvalidCombination();
+                visualPresenter?.ClearVisual();
+                audioManager?.PlayInvalidForm();
                 Log("No valid molecule match.");
                 return;
             }
 
+            UpdateUI(match);
+            UpdateVisuals(match);
+
             libraryDisplay?.RegisterDiscoveredMolecule(match);
+
+            bool allMoleculesDiscovered = libraryDisplay != null && libraryDisplay.HasDiscoveredAllMolecules();
 
             ConsumeAtoms();
 
             audioManager?.PlayFormSuccess();
+
+            if (allMoleculesDiscovered)
+            {
+                completionController?.ShowCompletion();
+            }
 
             Log($"Molecule formed: {match.MoleculeName}");
         }
@@ -153,10 +167,7 @@ namespace VRMolecularLab.Molecules
         {
             if (resultDisplay == null) return;
 
-            if (match != null)
-                resultDisplay.ShowMolecule(match);
-            else
-                resultDisplay.ClearDisplay();
+            resultDisplay.ShowMolecule(match);
         }
 
         private void UpdateVisuals(MoleculeDefinition match)

@@ -39,7 +39,28 @@ namespace VRMolecularLab.UI
                 RefreshDisplay();
             }
         }
+        public bool HasDiscoveredAllMolecules()
+        {
+            if (moleculeDatabase == null || moleculeDatabase.MoleculeDefinitions == null)
+            {
+                return false;
+            }
 
+            foreach (MoleculeDefinition molecule in moleculeDatabase.MoleculeDefinitions)
+            {
+                if (molecule == null)
+                {
+                    continue;
+                }
+
+                if (!discoveredMolecules.Contains(molecule))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
         public void RefreshDisplay()
         {
             if (titleText != null)

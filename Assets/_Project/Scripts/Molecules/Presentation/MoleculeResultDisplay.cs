@@ -16,6 +16,10 @@ namespace VRMolecularLab.Molecules
         [SerializeField] private string emptyFormulaText = "--";
         [SerializeField] private string emptyBondText = "--";
 
+        [Header("Invalid Feedback")]
+        [SerializeField] private string invalidNameText = "Invalid Combination";
+        [SerializeField] private string invalidFormulaText = "--";
+        [SerializeField] private string invalidBondText = "--";
         private void Awake()
         {
             SetDisplay(emptyNameText, emptyFormulaText, emptyBondText);
@@ -36,6 +40,12 @@ namespace VRMolecularLab.Molecules
                 moleculeDefinition.BondType.ToString()
             );
 
+            SetRootVisible(true);
+        }
+
+        public void ShowInvalidCombination()
+        {
+            SetDisplay(invalidNameText, invalidFormulaText, invalidBondText);
             SetRootVisible(true);
         }
 
