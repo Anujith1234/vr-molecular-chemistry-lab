@@ -19,6 +19,7 @@ namespace VRMolecularLab.Molecules
 
         [Header("Presentation")]
         [SerializeField] private GameObject moleculePrefab;
+
         [TextArea]
         [SerializeField] private string description;
 
@@ -29,14 +30,20 @@ namespace VRMolecularLab.Molecules
         public GameObject MoleculePrefab => moleculePrefab;
         public string Description => description;
 
-        public bool Matches(Dictionary<AtomType, int> atomCounts)
+        public bool Matches(IReadOnlyDictionary<AtomType, int> atomCounts)
         {
+            if (atomCounts == null || atomCounts.Count == 0)
+            {
+                return false;
+            }
+
             if (requiredAtoms == null || requiredAtoms.Count == 0)
             {
                 return false;
             }
 
             int requiredTotal = 0;
+
             foreach (AtomCountRequirement requirement in requiredAtoms)
             {
                 if (requirement == null || requirement.Count <= 0)
@@ -57,13 +64,19 @@ namespace VRMolecularLab.Molecules
                 }
             }
 
-            int providedTotal = 0;
+            return GetTotalAtomCount(atomCounts) == requiredTotal;
+        }
+
+        private static int GetTotalAtomCount(IReadOnlyDictionary<AtomType, int> atomCounts)
+        {
+            int total = 0;
+
             foreach (KeyValuePair<AtomType, int> pair in atomCounts)
             {
-                providedTotal += pair.Value;
+                total += pair.Value;
             }
 
-            return providedTotal == requiredTotal;
+            return total;
         }
     }
 }

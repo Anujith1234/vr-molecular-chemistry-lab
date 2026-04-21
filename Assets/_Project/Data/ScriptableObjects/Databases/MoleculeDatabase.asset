@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d1ecb0689ce8d8478c9ed57c0fa5148, type: 3}
-  m_Name: MoleculeDatabase_Main
+  m_Name: MoleculeDatabase
   m_EditorClassIdentifier: Assembly-CSharp::VRMolecularLab.Molecules.MoleculeDatabase
   moleculeDefinitions:
   - {fileID: 11400000, guid: 6df81b3109da2c54b9b2353f3da99228, type: 2}

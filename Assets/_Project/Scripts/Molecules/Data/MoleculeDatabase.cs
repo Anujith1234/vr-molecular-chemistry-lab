@@ -13,23 +13,28 @@ namespace VRMolecularLab.Molecules
 
         public IReadOnlyList<MoleculeDefinition> MoleculeDefinitions => moleculeDefinitions;
 
-        public MoleculeDefinition FindMatchingMolecule(Dictionary<AtomType, int> atomCounts)
+        public MoleculeDefinition FindMatchingMolecule(IReadOnlyDictionary<AtomType, int> atomCounts)
         {
             if (atomCounts == null || atomCounts.Count == 0)
             {
                 return null;
             }
 
-            foreach (MoleculeDefinition moleculeDefinition in moleculeDefinitions)
+            if (moleculeDefinitions == null || moleculeDefinitions.Count == 0)
             {
-                if (moleculeDefinition == null)
+                return null;
+            }
+
+            foreach (MoleculeDefinition molecule in moleculeDefinitions)
+            {
+                if (molecule == null)
                 {
                     continue;
                 }
 
-                if (moleculeDefinition.Matches(atomCounts))
+                if (molecule.Matches(atomCounts))
                 {
-                    return moleculeDefinition;
+                    return molecule;
                 }
             }
 

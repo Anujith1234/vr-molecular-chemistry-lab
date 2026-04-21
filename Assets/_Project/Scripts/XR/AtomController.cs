@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using VRMolecularLab.Data;
@@ -12,26 +13,28 @@ namespace VRMolecularLab.XR
 
         [Header("Optional References")]
         [SerializeField] private Renderer atomRenderer;
-        [SerializeField] private TMPro.TextMeshPro atomLabel;
+        [SerializeField] private TextMeshPro atomLabel;
 
         private XRGrabInteractable grabInteractable;
 
         public AtomType AtomType => atomType;
         public XRGrabInteractable GrabInteractable => grabInteractable;
+        public Renderer AtomRenderer => atomRenderer;
 
         private void Awake()
         {
             grabInteractable = GetComponent<XRGrabInteractable>();
-
-            if (atomLabel != null)
-            {
-                atomLabel.text = GetShortAtomLabel(atomType);
-            }
+            RefreshLabel();
         }
 
-        private string GetShortAtomLabel(AtomType type)
+        private void RefreshLabel()
         {
-            return type switch
+            if (atomLabel == null)
+            {
+                return;
+            }
+
+            atomLabel.text = atomType switch
             {
                 AtomType.Hydrogen => "H",
                 AtomType.Oxygen => "O",

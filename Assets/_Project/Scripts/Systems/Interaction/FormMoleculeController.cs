@@ -10,7 +10,7 @@ namespace VRMolecularLab.Molecules
         {
             if (reactionZone == null)
             {
-                Debug.LogWarning("FormMoleculeController has no ReactionZone assigned.", this);
+                Debug.LogWarning("FormMoleculeController is missing its ReactionZone reference.", this);
                 return;
             }
 

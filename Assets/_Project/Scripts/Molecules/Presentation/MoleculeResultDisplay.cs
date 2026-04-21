@@ -16,9 +16,10 @@ namespace VRMolecularLab.Molecules
         [SerializeField] private string emptyFormulaText = "--";
         [SerializeField] private string emptyBondText = "--";
 
-        private void Start()
+        private void Awake()
         {
-            ClearDisplay();
+            SetDisplay(emptyNameText, emptyFormulaText, emptyBondText);
+            SetRootVisible(true);
         }
 
         public void ShowMolecule(MoleculeDefinition moleculeDefinition)
@@ -29,47 +30,38 @@ namespace VRMolecularLab.Molecules
                 return;
             }
 
-            if (resultRoot != null)
-            {
-                resultRoot.SetActive(true);
-            }
+            SetDisplay(
+                moleculeDefinition.MoleculeName,
+                moleculeDefinition.Formula,
+                moleculeDefinition.BondType.ToString()
+            );
 
-            if (nameText != null)
-            {
-                nameText.text = moleculeDefinition.MoleculeName;
-            }
-
-            if (formulaText != null)
-            {
-                formulaText.text = moleculeDefinition.Formula;
-            }
-
-            if (bondText != null)
-            {
-                bondText.text = moleculeDefinition.BondType.ToString();
-            }
+            SetRootVisible(true);
         }
 
         public void ClearDisplay()
         {
-            if (resultRoot != null)
-            {
-                resultRoot.SetActive(true);
-            }
+            SetDisplay(emptyNameText, emptyFormulaText, emptyBondText);
+            SetRootVisible(true);
+        }
 
+        private void SetDisplay(string name, string formula, string bond)
+        {
             if (nameText != null)
-            {
-                nameText.text = emptyNameText;
-            }
+                nameText.text = name;
 
             if (formulaText != null)
-            {
-                formulaText.text = emptyFormulaText;
-            }
+                formulaText.text = formula;
 
             if (bondText != null)
+                bondText.text = bond;
+        }
+
+        private void SetRootVisible(bool visible)
+        {
+            if (resultRoot != null)
             {
-                bondText.text = emptyBondText;
+                resultRoot.SetActive(visible);
             }
         }
     }

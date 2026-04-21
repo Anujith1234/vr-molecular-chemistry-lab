@@ -11,33 +11,35 @@ namespace VRMolecularLab.Molecules
 
         public void ShowMolecule(MoleculeDefinition moleculeDefinition)
         {
-            ClearVisual();
+            if (visualAnchor == null)
+            {
+                Debug.LogWarning("MoleculeVisualPresenter is missing its visual anchor.", this);
+                return;
+            }
 
             if (moleculeDefinition == null || moleculeDefinition.MoleculePrefab == null)
             {
+                ClearVisual();
                 return;
             }
 
-            if (visualAnchor == null)
-            {
-                Debug.LogWarning("MoleculeVisualPresenter has no visual anchor assigned.", this);
-                return;
-            }
+            ClearVisual();
 
             currentVisualInstance = Instantiate(
                 moleculeDefinition.MoleculePrefab,
                 visualAnchor.position,
                 visualAnchor.rotation,
-                visualAnchor);
+                visualAnchor
+            );
         }
 
         public void ClearVisual()
         {
-            if (currentVisualInstance != null)
-            {
-                Destroy(currentVisualInstance);
-                currentVisualInstance = null;
-            }
+            if (currentVisualInstance == null)
+                return;
+
+            Destroy(currentVisualInstance);
+            currentVisualInstance = null;
         }
     }
 }

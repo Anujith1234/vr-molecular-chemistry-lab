@@ -17,10 +17,12 @@ namespace VRMolecularLab.UI
 
         [Header("Text")]
         [SerializeField] private string title = "Molecule Library";
+        [SerializeField] private string discoveredLabel = "[Discovered]";
+        [SerializeField] private string lockedLabel = "[Locked]";
 
         private readonly HashSet<MoleculeDefinition> discoveredMolecules = new();
 
-        private void Start()
+        private void Awake()
         {
             RefreshDisplay();
         }
@@ -45,8 +47,16 @@ namespace VRMolecularLab.UI
                 titleText.text = title;
             }
 
-            if (listText == null || moleculeDatabase == null)
+            if (listText == null)
             {
+                Debug.LogWarning("MoleculeLibraryDisplay is missing its list text reference.", this);
+                return;
+            }
+
+            if (moleculeDatabase == null)
+            {
+                Debug.LogWarning("MoleculeLibraryDisplay is missing its MoleculeDatabase reference.", this);
+                listText.text = string.Empty;
                 return;
             }
 
@@ -60,12 +70,18 @@ namespace VRMolecularLab.UI
                 }
 
                 bool isDiscovered = discoveredMolecules.Contains(molecule);
-                string stateText = isDiscovered ? "[Discovered]" : "[Locked]";
+                string stateLabel = isDiscovered ? discoveredLabel : lockedLabel;
 
-                builder.AppendLine($"{stateText} {molecule.MoleculeName} ({molecule.Formula})");
+                builder.AppendLine($"{stateLabel} {molecule.MoleculeName} ({molecule.Formula})");
             }
 
             listText.text = builder.ToString();
+        }
+
+        public void ClearDiscoveredState()
+        {
+            discoveredMolecules.Clear();
+            RefreshDisplay();
         }
     }
 }

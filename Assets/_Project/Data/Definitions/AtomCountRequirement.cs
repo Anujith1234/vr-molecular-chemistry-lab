@@ -7,6 +7,8 @@ namespace VRMolecularLab.Data
     public class AtomCountRequirement
     {
         [SerializeField] private AtomType atomType;
+
+        [Min(1)]
         [SerializeField] private int count = 1;
 
         public AtomType AtomType => atomType;
