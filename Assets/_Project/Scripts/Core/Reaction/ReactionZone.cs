@@ -59,6 +59,7 @@ namespace VRMolecularLab.Molecules
             if (TryGetAtom(other, out var atom))
             {
                 atomsInZone.Add(atom);
+                atom.SetBondingPreview(true);
                 Log($"Atom entered: {atom.AtomType}");
             }
         }
@@ -70,7 +71,18 @@ namespace VRMolecularLab.Molecules
             if (TryGetAtom(other, out var atom))
             {
                 atomsInZone.Remove(atom);
+                atom.SetBondingPreview(false);
                 Log($"Atom exited: {atom.AtomType}");
+            }
+        }
+        private void OnTriggerStay(Collider other)
+        {
+            if (isReactionLocked) return;
+
+            if (TryGetAtom(other, out var atom))
+            {
+                atomsInZone.Add(atom);
+                atom.SetBondingPreview(true);
             }
         }
 
@@ -105,6 +117,14 @@ namespace VRMolecularLab.Molecules
         public void ResetReactionState()
         {
             RestoreConsumedAtoms();
+
+            foreach (var atom in atomsInZone)
+            {
+                if (atom != null)
+                {
+                    atom.SetBondingPreview(false);
+                }
+            }
 
             atomsInZone.Clear();
             isReactionLocked = false;
@@ -182,6 +202,14 @@ namespace VRMolecularLab.Molecules
 
         private void RefreshAtoms()
         {
+            foreach (var atom in atomsInZone)
+            {
+                if (atom != null)
+                {
+                    atom.SetBondingPreview(false);
+                }
+            }
+
             atomsInZone.Clear();
 
             if (reactionTrigger == null)
@@ -212,6 +240,14 @@ namespace VRMolecularLab.Molecules
             }
 
             atomsInZone.UnionWith(uniqueAtoms);
+
+            foreach (var atom in atomsInZone)
+            {
+                if (atom != null)
+                {
+                    atom.SetBondingPreview(true);
+                }
+            }
         }
 
         private void ConsumeAtoms()
@@ -221,6 +257,8 @@ namespace VRMolecularLab.Molecules
             foreach (var atom in atomsInZone)
             {
                 if (atom == null) continue;
+
+                atom.SetBondingPreview(false);
 
                 if (atom.TryGetComponent(out AtomResettable resettable))
                 {
