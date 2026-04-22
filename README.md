@@ -129,7 +129,7 @@ The application was tested using:
 - Unity Editor with XR simulation
 - Windows PCVR build with headset connection
 
-Due to hardware access constraints at submission time, final Android build validation on device is structured and configured but not re-tested in the latest iteration.
+Android build settings were prepared for Meta Quest compatibility, including IL2CPP, ARM64, OpenXR, and API level 29+.
 
 ---
 
